@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BlueQuiz — testy</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>BlueQuiz</h1>
+    <div class="theme-toggle">
+      <label>
+        <input id="themeSwitch" type="checkbox">
+        <span>Jasny / Ciemny</span>
+      </label>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- Landing -->
+    <section id="landing" class="card">
+      <h2>Dołącz do testu</h2>
+      <label>Kod testu
+        <input id="joinCode" placeholder="np. 123456">
+      </label>
+      <label>Imię i nazwisko
+        <input id="participantName" placeholder="Jan Kowalski">
+      </label>
+      <div class="row">
+        <button id="joinBtn" class="primary">Wejdź</button>
+        <button id="adminBtn" class="secondary">Panel administratora</button>
+      </div>
+    </section>
+
+    <!-- Participant view -->
+    <section id="participantArea" class="card hidden">
+      <h2 id="testTitle">Test</h2>
+      <div id="countdown" class="muted"></div>
+      <div id="questionBox"></div>
+      <div id="questionControls" class="row">
+        <button id="nextBtn" class="primary">Dalej</button>
+        <button id="submitBtn" class="secondary">Zakończ test</button>
+      </div>
+    </section>
+
+    <!-- Result -->
+    <section id="resultArea" class="card hidden">
+      <h2>Wynik</h2>
+      <p id="scoreText"></p>
+      <button id="backHome">Powrót do startu</button>
+    </section>
+
+    <!-- Admin login -->
+    <section id="adminLogin" class="card hidden">
+      <h2>Panel administratora — logowanie</h2>
+      <label>Hasło admina
+        <input id="adminPass" type="password" placeholder="hasło">
+      </label>
+      <div class="row">
+        <button id="adminLoginBtn" class="primary">Zaloguj</button>
+        <button id="adminCancel" class="secondary">Anuluj</button>
+      </div>
+      <p class="muted small">Domyślne hasło: <code>admin123</code> — zmień je w ustawieniach.</p>
+    </section>
+
+    <!-- Admin dashboard -->
+    <section id="adminArea" class="card hidden">
+      <h2>Panel administratora</h2>
+
+      <details open>
+        <summary>Ustawienia testu</summary>
+        <label>Nazwa testu
+          <input id="testName" placeholder="Test próbny">
+        </label>
+        <label>Ilość pytań
+          <input id="numQuestions" type="number" min="1">
+        </label>
+        <label>Czas całego testu (sekundy, 0 = bez limitu)
+          <input id="totalTime" type="number" min="0" value="0">
+        </label>
+        <label>Tryb losowy
+          <input id="randomMode" type="checkbox">
+        </label>
+        <div class="row">
+          <button id="createTestBtn" class="primary">Utwórz i uruchom test</button>
+          <button id="viewActiveBtn" class="secondary">Pokaż aktywne testy</button>
+        </div>
+      </details>
+
+      <details>
+        <summary>Edytor bazy pytań</summary>
+        <div id="questionForm">
+          <label>Treść pytania
+            <input id="qText" placeholder="Treść pytania">
+          </label>
+          <label>Odpowiedź A
+            <input id="optA" placeholder="Odp A">
+          </label>
+          <label>Odpowiedź B
+            <input id="optB" placeholder="Odp B">
+          </label>
+          <label>Odpowiedź C
+            <input id="optC" placeholder="Odp C (opcjonalnie)">
+          </label>
+          <label>Odpowiedź D
+            <input id="optD" placeholder="Odp D (opcjonalnie)">
+          </label>
+          <label>Prawidłowa (A/B/C/D)
+            <input id="correctOpt" maxlength="1" placeholder="A">
+          </label>
+          <div class="row">
+            <button id="addQBtn" class="primary">Dodaj pytanie</button>
+            <button id="clearDbBtn" class="secondary">Wyczyść bazę</button>
+          </div>
+        </div>
+        <h3>Lista pytań</h3>
+        <ul id="questionsList" class="list"></ul>
+      </details>
+
+      <details>
+        <summary>Ustawienia konta admina</summary>
+        <label>Nowe hasło admina
+          <input id="newAdminPass" type="password" placeholder="nowe hasło">
+        </label>
+        <div class="row">
+          <button id="changePassBtn" class="primary">Zmień hasło</button>
+        </div>
+      </details>
+
+      <div class="row">
+        <button id="logoutAdmin" class="secondary">Wyloguj</button>
+      </div>
+    </section>
+
+    <!-- Active tests viewer -->
+    <section id="activeTests" class="card hidden">
+      <h2>Aktywne testy</h2>
+      <ul id="activeList" class="list"></ul>
+      <div class="row">
+        <button id="closeActive" class="secondary">Zamknij</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <small>BlueQuiz — minimalistyczny quiz na GitHub Pages</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
