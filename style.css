@@ -1,0 +1,59 @@
+:root{
+  --bg:#f4f8ff;
+  --card:#ffffff;
+  --text:#0b2a4a;
+  --muted:#546e88;
+  --accent:#1e63d6;
+  --accent-dark:#0f3f7a;
+  --shadow: 0 6px 18px rgba(10,25,50,0.08);
+}
+body.dark{
+  --bg:#071028;
+  --card:#071933;
+  --text:#e6f0ff;
+  --muted:#9fb3d6;
+  --accent:#5ea0ff;
+  --accent-dark:#2e6fbf;
+  --shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 20px;
+  border-bottom:1px solid rgba(0,0,0,0.04);
+}
+h1{margin:0;font-size:20px;color:var(--accent-dark)}
+main{padding:18px;flex:1;max-width:980px;margin:0 auto;width:100%}
+.card{background:var(--card);box-shadow:var(--shadow);border-radius:10px;padding:16px;margin-bottom:14px}
+.hidden{display:none}
+label{display:block;margin:8px 0;font-size:14px;color:var(--muted)}
+input[type="text"], input, textarea{width:100%;padding:8px;border-radius:6px;border:1px solid rgba(11,42,74,0.08);background:transparent;color:var(--text)}
+.row{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+button{padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
+.primary{background:var(--accent);color:white}
+.secondary{background:transparent;border:1px solid rgba(11,42,74,0.08);color:var(--text)}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.list{list-style:none;padding:0;margin:8px 0}
+.list li{padding:8px;border-radius:6px;border:1px dashed rgba(11,42,74,0.04);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+footer{padding:12px;text-align:center;color:var(--muted);font-size:13px}
+.theme-toggle{font-size:13px;color:var(--muted)}
+#questionBox{margin-top:10px}
+.choice{display:block;margin:6px 0;padding:10px;border-radius:8px;border:1px solid rgba(11,42,74,0.06);cursor:pointer}
+.choice.selected{outline:3px solid rgba(30,99,214,0.14);background:rgba(30,99,214,0.04)}
+.muted small{display:block}
+@media (max-width:600px){
+  header{padding:12px}
+  main{padding:12px}
+}
